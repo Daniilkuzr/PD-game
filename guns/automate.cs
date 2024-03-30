@@ -26,18 +26,30 @@ public class automate : MonoBehaviour
     void Update()
     {
 
-        //if (timeBtwShots <= 0 && Ochered <=0)
-        //{
-        //    Instantiate(bullet, shotPoint.position, transform.rotation);
-        //    Ochered = StartTimeOcheredShots;
+        if (timeBtwShots <= 0 && strike == true)
+        {
+            Instantiate(bullet, shotPoint.position, transform.rotation);
+            timeBtwShots = StartTimeBtwShots;
+            oboima--;
 
-        //}
-        //else if
+        }
+        else
+        {
+            timeBtwShots -= Time.deltaTime;
+        }
 
-
-        //else
-        //{
-        //    timeBtwShots -= Time.deltaTime;
+        if (oboima <= 0) strike = false;
+        if (strike == false && Ochered >= 0)
+        {
+            Ochered -= Time.deltaTime;
+        }
+        else
+        {
+            Ochered = StartTimeOcheredShots;
+            strike = true;
+            oboima = pul;
+        }
+        BtwShots -= Time.deltaTime;
         //}
     }
 
